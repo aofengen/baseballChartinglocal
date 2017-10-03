@@ -43,10 +43,12 @@ $(function() {
 		if (target === "#Hstats") {
 			BaseballChart.team.setTeams("Hstats");
 			BaseballChart.player.setPlayers("Hstats");
+			// BaseballChart.position.setPositions(false, "Hstats");
 		}
 		if (target === "#Pstats") {
 			BaseballChart.team.setTeams("Pstats");
 			BaseballChart.player.setPlayers("Pstats");
+			// BaseballChart.position.setPositions(true, "Pstats");
 		}
 	});
 

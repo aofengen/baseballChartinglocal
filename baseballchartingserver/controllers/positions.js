@@ -26,7 +26,7 @@ exports.addPosition = function(req, res) {
 
 exports.getPositions = function(req, res) {
     Position.findAll({
-        where: {bench: false, pitcher: req.body.pitcher}
+        where: {bench: false, pitcher: req.body.pitcherValue}
     })
     .then(
         function findAllSuccess(data) {

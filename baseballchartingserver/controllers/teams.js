@@ -4,7 +4,6 @@ const User = sequelize.import('../models/user.js');
 const Team = sequelize.import('../models/team.js');
 
 exports.addTeam = function(req, res) {
-    console.log(req.body);
     let teamName = req.body.teamName;
     let owner = req.user.id;
 

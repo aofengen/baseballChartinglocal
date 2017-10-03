@@ -4,7 +4,6 @@
  				teamList: [],
  				create: function() {
  					let teamName = $("#teamName").val()
- 					console.log(teamName);
 	 				let postData = {teamName: teamName};
 	 				let newTeam = $.ajax({
 	 					type: "POST",

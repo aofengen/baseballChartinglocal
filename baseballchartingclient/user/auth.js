@@ -37,6 +37,8 @@ $(function(){
 					$(".disabled").removeClass("disabled");
 					$(".nav").removeClass("hidden");
 					$(".nav").show();
+					$("#loginPage").removeClass("active");
+					$("#home").addClass("active");
 					$("#su_email").val("");
 					$("#su_username").val("");
 					$("#su_password").val("");
@@ -83,6 +85,8 @@ $(function(){
 					$(".disabled").removeClass("disabled");
 					$(".nav").removeClass("hidden");
 					$(".nav").show();
+					$("#loginPage").removeClass("active");
+					$("#home").addClass("active");
 					$("#li_email").val("");
 					$("#li_password").val("");
 					$("#li_error").hide();

@@ -4,7 +4,6 @@ const Team = sequelize.import('../models/team.js');
 const Player = sequelize.import('../models/player.js');
 
 exports.addPlayer = function(req, res) {
-    console.log(req);
     let name = req.body.player.name;
     let teamName = req.body.player.teamName;
     let number = req.body.player.number;
@@ -36,7 +35,6 @@ exports.getPlayers = function(req, res) {
     })
     .then(
         function findAllSuccess(data) {
-            console.log(data);
             res.json(data);
         },
         function findAllError(err) {
@@ -48,7 +46,6 @@ exports.getPlayers = function(req, res) {
 exports.deletePlayer = function(req, res) {
     let player = req.body.player;
     
-    console.log(player);
     Player.destroy({where: {name: player}})
     .then(
         function deleteSuccess(data) {
