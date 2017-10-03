@@ -8,21 +8,23 @@
 		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
 		<script src="./bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-		<title>Workout Log</title>
+		<title>Play Ball!!!</title>
 	</head>
 	<body>
 		<ul class="nav nav-tabs hidden">
-			<li><a href="#loginPage" id="logout" class="disabled" data-toggle="tab">Login</a></li>
-			<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+			<li><a href="#loginPage" id="logout" class="disabled" data-toggle="tab">Logout</a></li>
+			<li class="active"><a href="#home" data-toggle="tab">Profile</a></li>
 			<li><a href="#teams" data-toggle="tab">Teams</a></li>
 			<li><a href="#players" data-toggle="tab">Players</a></li>
-			<li><a href="#stats" data-toggle="tab">Stats</a></li>
+			<li><a href="#Hstats" data-toggle="tab">Hitting Stats</a></li>
+			<li><a href="#Pstats" data-toggle="tab">Pitching Stats</a></li>
+			<li class="pull-right" data-toggle="tab">Hello <label id="userName"></label>!</li>
 		</ul>
 
 		<div class="container">
 			<div class="tab-content">
 				<div class="tab-pane active" id="loginPage">
-					<h2>Workout Log!</h2>
+					<h2>Baseball Charting and stat-tracking app!</h2>
 					<div id="forLogin">
 						<button data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Login</button>
 						<button data-toggle="modal" data-target="#signup-modal" class="btn btn-primary">Sign Up</button>
@@ -31,44 +33,82 @@
 						<button class="btn btn-primary">Logout</button>
 					</div>
 				</div>
+				<div class="tab-pane" id="home">
+					<h2>Welcome!</h2>
+					<div>
+						<button class="btn btn-primary" id="homeToTeam">Add Team</button>
+						<button class="btn btn-primary" id="homeToPlayer">Add Player</button>
+						<button class="btn btn-primary" id="homeToHstats">Hitting Stats</button>
+						<button class="btn btn-primary" id="homeToPstats">Pitching Stats</button>
+					</div>
+				</div>
 				<div class="tab-pane fade" id="teams">
-					<h2>Define</h2>
-					<label for="def-description">Description</label>
-					<textarea class="form-control" id="def-description" rows="3"></textarea>
-					<label for="def-logtype">Log work by</label>
-					<select class="form-control" id="def-logtype">
-						<option>Time</option>
-						<option>Weight</option>
-						<option>Reps</option>
-					</select>
-					<button id="def-save" class="btn btn-primary">Save</button>
+					<h2>Add Team</h2>
+					<div class="row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-3">
+							<label for="teamName">New Team Name</label>
+							<input type="text" class="form-control" id="teamName" />
+							<br>
+							<button id="teamSave" class="btn btn-primary">Save</button>
+							<button class="btn btn-default" id="teamCancel">Cancel</button>
+						</div>
+						<div class="col-sm-5"></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-3">
+							<label>Teams:</label>
+							<select class="form-control" id="team-teamList"></select>
+							<button class="btn btn-danger" id="teamDelete">Delete</button>
+						</div>
+						<div class="col-sm-5"></div>
+					</div>
 				</div>
 				<div class="tab-pane fade" id="players">
-					<h2>Log!</h2>
-					<label>Result</label>
-					<input type="text" class="form-control" id="log-result" />
-					<label>Workout Select:</label>
-					<select class="form-control" id="log-definition"></select>
-					<label>Notes</label>
-					<textarea id="log-description" rows="3" class="form-control"></textarea>
-					<button class="btn btn-primary" id="log-save">Save</button>
+					<h2>Add Players</h2>
+					<div class="row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-3">
+							<label>Team:</label>
+							<select class="form-control" id="player-teamList"></select>
+							<label>New Player Name:</label>
+							<input type="text" class="form-control" id="playerName" />	
+							<label>New Player Number:</label>
+							<input type="text" id="playerNumber" class="form-control"></input>
+							<br>
+							<button class="btn btn-primary" id="playerSave">Save</button>
+							<button class="btn btn-default" id="playerCancel">Cancel</button>
+						</div>
+						<div class="row">
+						<div class="col-sm-5"></div>
+							<div class="col-sm-2">
+								<label>Players:</label>
+								<select class="form-control" id="player-playerList"></select>
+								<button class="btn btn-danger" id="playerDelete">Delete</button>
+							</div>
+						<div class="col-sm-5"></div>
+					</div>
+						<div class="col-sm-5"></div>
+					</div>
 				</div>
-				<div class="tab-pane fade" id="stats">
-					<h2>Log Update</h2>
-					<label>Result</label>
-					<input type="hidden" class="form-control" id="update-id" />
-					<input type="text" class="form-control" id="update-result" />
-					<label>Workout Select:</label>
-					<select id="update-definition" class="form-control"></select>
-					<label>Notes</label>
-					<textarea id="update-description" rows="3" class="form-control"></textarea>
-					<br>
-					<button class="btn btn-primary" id="log-update">Save</button>
+				<div class="tab-pane fade" id="Hstats">
+					<h2>Hitting Stats</h2>
+					<label>Team:</label>
+					<select class="form-control" id="Hstats-teamList"></select>
+					<label>Players:</label>
+					<select class="form-control" id="Hstats-playerList"></select>
+					<label>Position:</label>
+					<select class="form-control" id="Hstats-positionList"></select>
 				</div>
-				<div class="tab-pane fade" id="history">
-					<h2>History</h2>
-					<ul class="list-group" id="history-list">
-					</ul>
+				<div class="tab-pane fade" id="Pstats">
+					<h2>Pitching Stats</h2>
+					<label>Team:</label>
+					<select class="form-control" id="Pstats-teamList"></select>
+					<label>Players:</label>
+					<select class="form-control" id="Pstats-playerList"></select>
+					<label>Position:</label>
+					<select class="form-control" id="Pstats-positionList"></select>
 				</div>
 			</div>
 		</div>
@@ -83,8 +123,9 @@
 					</div>
 					<div class="modal-body">
 						<div class="alert alert-danger" style="display:none;" role="alert" id="li_error"></div>
-						<label for="li_username">Username:</label>
-						<input class="form-control" id="li_username" />
+						<label for="li_username">Email:</label>
+						<input class="form-control" id="li_email" />
+						<br>
 						<label for="li_password">Password:</label>
 						<input type="password" class="form-control" id="li_password" />
 					</div>
@@ -101,13 +142,18 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span></button>
 						<h4 class="modal-title">Sign Up</h4>
 					</div>
 					<div class="modal-body">
 						<div class="alert alert-danger" role="alert" style="display:none;" id="su_error"></div>
+						<label for="su_email">Email:</label>
+						<input type="text" id="su_email" />
+						<br>
 						<label for="su_username">Username:</label>
 						<input type="text" id="su_username" />
+						<br>
 						<label for="su_password">Password:</label>
 						<input type="password" id="su_password" />
 					</div>
@@ -118,9 +164,10 @@
 				</div>
 			</div>
 		</div>
+
 		<script src="app.js"></script>
 		<script src="./user/auth.js"></script>
-		<!-- <script src="./workouts/define.js"></script>
-		<script src="./workouts/log.js"></script> -->
+		<script src="./rosters/teams.js"></script>
+		<script src="./rosters/players.js"></script>
 	</body> 
 </html>

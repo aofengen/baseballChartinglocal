@@ -33,15 +33,21 @@ $(function() {
 	//bind tab change events
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
 		let target = $(e.target).attr("href"); //activated tab
-		// if (target === "#log") {
-		// 	BaseballChart.log.setDefinitions("log");
-		// }
-		// if (target === "#update-log") {
-		// 	BaseballChart.log.setDefinitions("update");
-		// }
-		// if (target === "#history") {
-		// 	BaseballChart.log.setHistory();
-		// }
+		if (target === "#teams") {
+			BaseballChart.team.setTeams("team");
+		}
+		if (target === "#players") {
+			BaseballChart.team.setTeams("player");
+			BaseballChart.player.setPlayers("player")
+		}
+		if (target === "#Hstats") {
+			BaseballChart.team.setTeams("Hstats");
+			BaseballChart.player.setPlayers("Hstats");
+		}
+		if (target === "#Pstats") {
+			BaseballChart.team.setTeams("Pstats");
+			BaseballChart.player.setPlayers("Pstats");
+		}
 	});
 
 	let token = window.localStorage.getItem("sessionToken");

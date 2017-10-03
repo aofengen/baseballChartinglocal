@@ -1,6 +1,7 @@
 const Auth = require('./controllers/auth.js');
 const Team = require('./controllers/teams.js');
 const Player = require('./controllers/players.js');
+const Position = require('./controllers/positions.js');
 // const passportService = require('./services/passport.js');
 // const passport = require('passport');
 
@@ -14,7 +15,8 @@ module.exports = function(app) {
     app.post('/api/player', Player.addPlayer);
 
     app.get('/api/team', Team.getTeams);
-    app.get('/api/player', Player.getPlayers)
+    app.get('/api/player', Player.getPlayers);
+    app.get('/api/position', Position.getPositions);
 
     app.delete('/api/team', Team.deleteTeam);
     app.delete('/api/player', Player.deletePlayer);
